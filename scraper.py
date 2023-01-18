@@ -1,5 +1,4 @@
 import time
-
 import discord
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -183,6 +182,6 @@ async def scrape(message: discord.Message):
 
     # send the list to the channel as formatted string with each item on a new line
     for item in sorted_data[:3]:
-        await message.channel.send(f"{item.name} - {item.price} - {item.img} - {item.link}")
-
-    return await message.channel.send('Done')
+        emb = discord.Embed(title=item.name, description=item.price, url=item.link)
+        emb.set_image(url=item.img)
+        await message.channel.send(embed=emb)
