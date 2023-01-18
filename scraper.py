@@ -28,9 +28,10 @@ class Info:
 
 
 class Options:
-    def __init__(self, item, location):
+    def __init__(self, item, location, distance):
         self.item = item
         self.location = location
+        self.distance = distance
 
     def __str__(self):
         return f"{self.item}, {self.location}"
@@ -45,6 +46,7 @@ def get_options(text: str):
 
     item = ""
     location = ""
+    distance = ""
 
     print(options)
 
@@ -56,8 +58,10 @@ def get_options(text: str):
                 item = value
             case "location":
                 location = value
+            case "distance":
+                distance = value
 
-    return Options(item, location)
+    return Options(item, location, distance)
 
 
 async def scrape(message: discord.Message):
@@ -89,11 +93,49 @@ async def scrape(message: discord.Message):
 
     time.sleep(2)
 
+
     option_list = driver.find_elements(By.XPATH,
                                        "//div[@class='x6s0dn4 x1ypdohk x78zum5 x6ikm8r x10wlt62 x1n2onr6 xi2jdih x1lq5wgf xgqcy7u x30kzoy x9jhf4c xdj266r xat24cr x1y1aw1k x1sxyh0 xwib8y2 xurb0ha']")
 
     # click on the first option
     option_list[0].click()
+
+    time.sleep(2)
+
+    driver.find_element(By.XPATH,
+                         "//div[@class='xjyslct xjbqb8w x13fuv20 xu3j5b3 x1q0q8m5 x26u7qi x972fbf xcfux6l x1qhh985 xm0m39n x9f619 x78zum5 x1jchvi3 x1fcty0u x132q4wb xdj266r x11i5rnm xat24cr x1mh8g0r x1a2a7pz x9desvi x1pi30zi x1a8lsjc x1n2onr6 x16tdsg8 xh8yej3 x1ja2u2z xzsf02u x1swvt13']")\
+        .click()
+
+    time.sleep(2)
+
+    distsance_list = driver.find_elements(By.XPATH,
+                                          "//div[@class='x1i10hfl xjbqb8w x6umtig x1b1mbwd xaqea5y xav7gou xe8uvvx x1hl2dhg xggy1nq x1o1ewxj x3x9cwd x1e5q0jg x13rtm0m x87ps6o x1lku1pv x1a2a7pz x6s0dn4 xjyslct x9f619 x1ypdohk x78zum5 x1q0g3np x2lah0s x13mpval x1w4qvff xdj266r xat24cr xz9dl7a x1sxyh0 xsag5q8 xurb0ha x1n2onr6 x16tdsg8 x1ja2u2z']")
+    if options.distance == "1":
+        distsance_list[0].click()
+    elif options.distance == "2":
+        distsance_list[1].click()
+    elif options.distance == "5":
+        distsance_list[2].click()
+    elif options.distance == "10":
+        distsance_list[3].click()
+    elif options.distance == "20":
+        distsance_list[4].click()
+    elif options.distance == "40":
+        distsance_list[5].click()
+    elif options.distance == "60":
+        distsance_list[6].click()
+    elif options.distance == "65":
+        distsance_list[7].click()
+    elif options.distance == "80":
+        distsance_list[8].click()
+    elif options.distance == "100":
+        distsance_list[9].click()
+    elif options.distance == "250":
+        distsance_list[10].click()
+    elif options.distance == "500":
+        distsance_list[11].click()
+    else:
+        distsance_list[0].click()
 
     time.sleep(2)
 

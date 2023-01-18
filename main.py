@@ -22,5 +22,4 @@ async def on_message(message: discord.Message):
     if message.content.startswith('!scrape'):
         return await scrape(message)
 
-
-client.run('MTA2MzY2MzEyMjA1NDkyMjI2MQ.GQ6Msz.FJry9I4AxHVUmAFWx6nEHdoEZEq4bKaMdNRoqQ')
+client.run('MTA2MzY2MzEyMjA1NDkyMjI2MQ.G62gWO.GcB86Dl58PdOi4IhJzdHagQSwtaLbH3MhuW-FE')
