@@ -182,6 +182,6 @@ async def scrape(message: discord.Message):
 
     # send the list to the channel as formatted string with each item on a new line
     for item in sorted_data[:3]:
-        emb = discord.Embed(title=item.name, description=item.price, url=item.link)
+        emb = discord.Embed(title=item.name, description=item.price, url=item.link, color=0x0000ff)
         emb.set_image(url=item.img)
         await message.channel.send(embed=emb)
